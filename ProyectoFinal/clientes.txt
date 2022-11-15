@@ -1,0 +1,11 @@
+1001;Ana Carolina;Ramos Neira;44236133;Jr. San Martín 514;986600234
+1002;Juan Jorge;Barbadillo Piscoya;43522018;Jr. San Martin 514;964287035
+1003;Zarela Esther;Neira Alvarado;02628023;Urb. Ignacio Merino Q-14;985236147
+1004;Francisco Tomás;Ramos Cisneros;02628022;Urb. Ignacio Merino Q1-14;978521464
+1005;Juana ;Piscoya Flores;70253698;Calle Los Mirtos 987;978542316
+1006;Franshesca ;Ramos;47236581;Av. Los Ficus Lote 34 ;947512521
+1007;Lucía;Ramos Neira;47812541;Jr Moquegua 123;912458723
+1008;José ;Montesinos;47896542;Av. Chulucanas 725;985469023
+1009;Adrián ;Castillo;430789124;Jr. Tacna 17;973254692
+1010;Geraldine;Rivera;42178687;Av. Los Laureles 1003;947562341
+1011;Matias;Agustìn;7897944;Jr San Martìn 514 magdalena;98797897
