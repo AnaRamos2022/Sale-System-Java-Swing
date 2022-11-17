@@ -59,6 +59,7 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 	private ArregloClientes arregloClientes;
 	private JLabel lblVentas;
 	private int stockActual;
+	private Producto producto;
 
 	/**
 	 * Launch the application.
@@ -220,6 +221,7 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 		this.arregloClientes=new ArregloClientes();
 		
 	}
+
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnGuardar) {
 			actionPerformedBtnGuardar(e);
@@ -228,6 +230,7 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 			actionPerformedBtnBuscar(e);
 		}
 	}
+
 	protected void actionPerformedBtnBuscar(ActionEvent e) {
 		if ((textCodCliente.getText().equals("")) || (textCodProducto.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Ingresar datos de búsqueda");
@@ -248,7 +251,7 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 		}
 
 		// Buscar código producto:
-		Producto producto = arregloProductos.obtenerProductoCodigo(codProducto);
+		producto = arregloProductos.obtenerProductoCodigo(codProducto);
 		if (producto != null) {
 			this.textCodProducto1.setText(producto.getCodigoProducto() + "");
 			this.textNomProducto.setText(producto.getNombre());
@@ -259,9 +262,11 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 					"No existe el código de Producto ingresado. Ingresar el código correcto");
 		}
 	}
-	
+
 	protected void actionPerformedBtnGuardar(ActionEvent e) {
-		if ((textCodCliente1.getText().equals(""))|| (textNomCliente.getText().equals(""))|| (textCodProducto1.getText().equals(""))|| (textNomProducto.getText().equals("")) || (textPrecio.getText().equals(""))|| (textCantidad.getText().equals(""))) {
+		if ((textCodCliente1.getText().equals("")) || (textNomCliente.getText().equals(""))
+				|| (textCodProducto1.getText().equals("")) || (textNomProducto.getText().equals(""))
+				|| (textPrecio.getText().equals("")) || (textCantidad.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Ingresar datos completos");
 			return;
 		}
@@ -290,8 +295,10 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 			textArea.append("Precio Unitario: 			" + textPrecio.getText() + "\n");
 			textArea.append("Importe Subtotal: 		" + venta.obtenerSubTotal() + "\n");
 			textArea.append("Importe IGV: 			" + venta.obtenerImporteIGV() + "\n");
-			textArea.append("Importe Total: 			" + venta.obtenerImporteTotal()+ "\n");
+			textArea.append("Importe Total: 			" + venta.obtenerImporteTotal() + "\n");
 			arregloVentas.adicionarVenta(venta);
+			producto.setStockActual(producto.getStockActual() - cantidad);
+			arregloProductos.modificarProducto(producto);
 		}
 	}
 }

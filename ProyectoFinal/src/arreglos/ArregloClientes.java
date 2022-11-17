@@ -16,7 +16,7 @@ public class ArregloClientes {
 	public ArregloClientes() {
 		cargarArchivoClientes();
 	}
-	
+
 	// Metodos de acceso público: set/get
 	public ArrayList<Cliente> getListadoClientes() {
 		return listadoClientes;
@@ -31,19 +31,18 @@ public class ArregloClientes {
 		listadoClientes.add(cliente);
 		this.archivarClientes();
 	}
-	
-	//método tamaño
-		public int tamaño() {
-			return listadoClientes.size();
-		}
-		
-		//Método obtenerProducto
-		public Cliente obtenerCliente(int i) {
-			return listadoClientes.get(i);
-		}
 
+	// método tamaño
+	public int tamaño() {
+		return listadoClientes.size();
+	}
 
-	// Método conseguir la posicion del ultimo cliente
+	// Método obtenerProducto
+	public Cliente obtenerCliente(int i) {
+		return listadoClientes.get(i);
+	}
+
+	// Método obtiene la posicion del ultimo cliente y devolver el código correlativo incrementado en 1.
 	public int obtenerCodigoCorrelativo() {
 		int ultimaPosicionArrayList = listadoClientes.size() - 1;
 		if (listadoClientes.size() == 0) {
@@ -55,7 +54,7 @@ public class ArregloClientes {
 		}
 	}
 
-	// Metodo consultar para obtener cliente por código
+	// Metodo consultar para obtener cliente por código correlativo ingresado.
 	public Cliente obtenerClienteCodigo(int codCliente) {
 		for (int i = 0; i < listadoClientes.size(); i++) {
 			if (codCliente == listadoClientes.get(i).getCodigoCliente()) {
@@ -83,36 +82,35 @@ public class ArregloClientes {
 		}
 		return -1;
 	}
-	
-	//Método que elimina el cliente cuyo codigo ha sido seleccionado
+
+	// Método que elimina el cliente cuyo codigo ha sido seleccionado
 	public void eliminarCliente(int codigo) {
 		int posicionEliminar = posicionClienteCodigo(codigo);
 		listadoClientes.remove(posicionEliminar);
 		this.archivarClientes();
 	}
-	
-	
-	//Método para guardar la data de la Lista de Clientes en un archivo
+
+	// Método para guardar la data de la Lista de Clientes en un archivo
 	private void archivarClientes() {
-		
+
 		try {
 			PrintWriter pw;
 			Cliente c;
 			String fila;
-			pw=new PrintWriter(new FileWriter("clientes.txt"));
-			for(int i=0; i<listadoClientes.size(); i++) {
-				c=listadoClientes.get(i);
-				fila=c.getCodigoCliente() + ";" + c.getNombres() + ";" + c.getApellidos() + ";" + c.getDni() + ";" + c.getDireccion() + ";" + c.getTelefono();
+			pw = new PrintWriter(new FileWriter("clientes.txt"));
+			for (int i = 0; i < listadoClientes.size(); i++) {
+				c = listadoClientes.get(i);
+				fila = c.getCodigoCliente() + ";" + c.getNombres() + ";" + c.getApellidos() + ";" + c.getDni() + ";"
+						+ c.getDireccion() + ";" + c.getTelefono();
 				pw.println(fila);
 			}
 			pw.close();
-		}
-		catch (Exception e) {
-			
+		} catch (Exception e) {
+
 		}
 	}
-	
-	//Método para leer el archivo de Clientes fila por fila.
+
+	// Método para leer el archivo de Clientes fila por fila.
 	private void cargarArchivoClientes() {
 		try {
 			BufferedReader br;

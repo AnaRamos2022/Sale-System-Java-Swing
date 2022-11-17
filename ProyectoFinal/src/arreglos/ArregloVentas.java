@@ -1,4 +1,4 @@
-package arreglos;
+	package arreglos;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
