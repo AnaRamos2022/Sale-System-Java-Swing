@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import clases.Cliente;
 import clases.Producto;
 
 public class ArregloProductos {
@@ -18,18 +17,18 @@ public class ArregloProductos {
 		}
 
 	// Metodos de acceso público: set/get
+	public ArrayList<Producto> getListadoProducto() {
+			return listadoProducto;
+	}
+	
 	public void setListadoProducto(ArrayList<Producto> listadoProducto) {
 		this.listadoProducto = listadoProducto;
 	}
 	
-	public ArrayList<Producto> getListadoProducto() {
-		return listadoProducto;
-	}
-
 	// Método que adicionará productos al pulsar el btn guardar.
 	public void adicionarProducto(Producto prod) {
 		listadoProducto.add(prod);
-		this.archivarProductos();
+		archivarProductos();
 	}
 	
 	//método tamaño
@@ -37,7 +36,7 @@ public class ArregloProductos {
 		return listadoProducto.size();
 	}
 	
-	//Método obtenerProducto
+	//Método para obtener el Producto ingresando una posición
 	public Producto obtenerProducto(int i) {
 		return listadoProducto.get(i);
 	}
@@ -49,7 +48,7 @@ public class ArregloProductos {
 			return 2001;
 		} else {
 			// conseguir el producto de la última posición registrado.
-			Producto utlimoProductoRegistrado = listadoProducto.get(ultimaPosicionArrayList);
+			Producto utlimoProductoRegistrado = obtenerProducto(ultimaPosicionArrayList);
 			return utlimoProductoRegistrado.getCodigoProducto() + 1;
 		}
 	}
@@ -57,8 +56,8 @@ public class ArregloProductos {
 	//Metodo consultar para obtener producto por codigo.
 	public Producto obtenerProductoCodigo(int codProd) {
 		for (int i=0; i<listadoProducto.size(); i++) {
-			if (codProd==listadoProducto.get(i).getCodigoProducto()) {
-				return listadoProducto.get(i);
+			if (codProd==obtenerProducto(i).getCodigoProducto()) {
+				return obtenerProducto(i);
 			}
 		}
 		return null;
@@ -67,15 +66,13 @@ public class ArregloProductos {
 	// Método que guardará productos modificados al pulsar el btn guardar.
 		public void modificarProducto(Producto producto) {
 			listadoProducto.set(posicionProductoCodigo(producto.getCodigoProducto()), producto);
-			this.archivarProductos();
+			archivarProductos();
 		}
 
-		// Método para obtener la posición del producto en el arrayList por código de
-		// cliente.
+	// Método para obtener la posición del producto en el arrayList por código de producto.
 		public int posicionProductoCodigo(int codigo) {
 			for (int i = 0; i < listadoProducto.size(); i++) {
-				int codigoCliente = listadoProducto.get(i).getCodigoProducto(); // devuelve el atributo codCliente del
-																				// cliente en la posicion i
+				int codigoCliente = obtenerProducto(i).getCodigoProducto(); // devuelve el atributo codProducto del producto en la posicion i
 				if (codigoCliente == codigo) {
 					return i;
 				}
@@ -99,7 +96,7 @@ public class ArregloProductos {
 				String fila;
 				pw=new PrintWriter(new FileWriter("productos.txt"));
 				for(int i=0; i<listadoProducto.size(); i++) {
-					p=listadoProducto.get(i);
+					p=obtenerProducto(i);
 					fila=p.getCodigoProducto() + ";" + p.getNombre() + ";" + p.getPrecio() + ";" + p.getStockActual() + ";" + p.getStockMinimo() + ";" + p.getStockMaximo();
 					pw.println(fila);
 				}

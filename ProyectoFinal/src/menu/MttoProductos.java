@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -230,9 +229,7 @@ public class MttoProductos extends JInternalFrame implements ActionListener {
 	}
 	
 	public void limpiarTabla() {
-		while (modelo.getRowCount() > 0) {
-			modelo.removeRow(0);
-		}
+		modelo.setRowCount(0);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -277,6 +274,7 @@ public class MttoProductos extends JInternalFrame implements ActionListener {
 		textStockMaximo.setText("");
 	}
 	protected void actionPerformedBtnGuardar(ActionEvent e) {
+		//Para verificar que todos los campos estén llenos
 		if ((textNomProducto.getText().equals(""))|| (textPrecio.getText().equals(""))|| (textStockActual.getText().equals(""))|| (textStockMinimo.getText().equals("")) || (textStockMaximo.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Ingresar datos completos");
 			return;
@@ -316,6 +314,7 @@ public class MttoProductos extends JInternalFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnBuscar(ActionEvent e) {
+		//Para verificar que se haya ingresado un código de producto
 		if ((textCodigo.getText().equals(""))){
 			JOptionPane.showMessageDialog(this, "Ingresar código de Producto");
 			return;
@@ -336,6 +335,7 @@ public class MttoProductos extends JInternalFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnModificacion(ActionEvent e) {
+		//Para verificar que todos los campos estén llenos
 		if ((textNomProducto.getText().equals(""))|| (textPrecio.getText().equals(""))|| (textStockActual.getText().equals(""))|| (textStockMinimo.getText().equals("")) || (textStockMaximo.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Buscar código de Producto");
 			return;
@@ -344,6 +344,7 @@ public class MttoProductos extends JInternalFrame implements ActionListener {
 		modificar=true;
 		}
 	protected void actionPerformedBtnEliminacion(ActionEvent e) {
+		//Para verificar que todos los campos estén llenos
 		if ((textNomProducto.getText().equals(""))|| (textPrecio.getText().equals(""))|| (textStockActual.getText().equals(""))|| (textStockMinimo.getText().equals("")) || (textStockMaximo.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Buscar código de Producto");
 			return;

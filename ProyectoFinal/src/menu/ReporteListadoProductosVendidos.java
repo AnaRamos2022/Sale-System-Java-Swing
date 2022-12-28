@@ -1,15 +1,12 @@
 package menu;
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import arreglos.ArregloProductos;
 import arreglos.ArregloVentas;
-import clases.Producto;
-import clases.Venta;
 
 public class ReporteListadoProductosVendidos extends JInternalFrame {
 	private JScrollPane scrollPane;
@@ -69,5 +66,4 @@ public class ReporteListadoProductosVendidos extends JInternalFrame {
 			textArea.append("" + "\n");
 		}
 	}
-
 }

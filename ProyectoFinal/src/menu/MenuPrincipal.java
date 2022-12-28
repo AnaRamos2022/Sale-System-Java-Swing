@@ -38,7 +38,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	private JMenu mnAlmacen;
 	private JMenuItem mntmActualizarAlmacen;
 	private JMenuItem mntmReporteListadoGeneralVentas;
-	private JMenuItem mntmReporteListadoProductosStock;;
+	private JMenuItem mntmReporteListadoProductosStock;
 	private JMenuItem mntmReporteListadoProductosVendidos;
 	private JMenuItem mntmReporteListadoProductosImporte;
 	private JLabel lblFondo;

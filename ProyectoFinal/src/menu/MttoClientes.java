@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -21,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
 
 import arreglos.ArregloClientes;
 import clases.Cliente;
-import clases.Producto;
 import icons.Icons;
 import javax.swing.SwingConstants;
 
@@ -229,9 +227,7 @@ public class MttoClientes extends JInternalFrame implements ActionListener {
 	}
 	
 	public void limpiarTabla() {
-		while (modelo.getRowCount() > 0) {
-			modelo.removeRow(0);
-		}
+		modelo.setRowCount(0);
 	}
 	public void habilitarCampos(boolean valor) {
 		textApellidos.setEnabled(valor);
@@ -275,6 +271,7 @@ public class MttoClientes extends JInternalFrame implements ActionListener {
 		this.btnEliminacion.setEnabled(false);
 	}
 	protected void actionPerformedBtnGuardar(ActionEvent e) {
+		//Para verificar que todos los campos estén llenos
 		if ((textNombres.getText().equals(""))|| (textApellidos.getText().equals(""))|| (textDni.getText().equals(""))|| (textDireccion.getText().equals("")) || (textTelefono.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Ingresar datos completos");
 			return;
@@ -312,6 +309,7 @@ public class MttoClientes extends JInternalFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnBuscar(ActionEvent e) {
+		//Para verificar que se haya ingresado un código de cliente
 		if ((textCodigo.getText().equals(""))){
 			JOptionPane.showMessageDialog(this, "Ingresar código de Cliente");
 			return;
@@ -334,6 +332,7 @@ public class MttoClientes extends JInternalFrame implements ActionListener {
 
 	
 	protected void actionPerformedBtnModificacion(ActionEvent e) {
+		//Para verificar que todos los campos estén llenos
 		if ((textNombres.getText().equals(""))|| (textApellidos.getText().equals(""))|| (textDni.getText().equals(""))|| (textDireccion.getText().equals("")) || (textTelefono.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Buscar código de Cliente");
 			return;
@@ -342,6 +341,7 @@ public class MttoClientes extends JInternalFrame implements ActionListener {
 		modificar=true;
 	}
 	protected void actionPerformedBtnEliminacion(ActionEvent e) {
+		//Para verificar que todos los campos estén llenos
 		if ((textNombres.getText().equals(""))|| (textApellidos.getText().equals(""))|| (textDni.getText().equals(""))|| (textDireccion.getText().equals("")) || (textTelefono.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Buscar código de Cliente");
 			return;

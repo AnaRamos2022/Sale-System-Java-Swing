@@ -7,8 +7,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import arreglos.ArregloProductos;
 import arreglos.ArregloVentas;
-import clases.Producto;
-import clases.Venta;
 
 public class ReporteListadoProductosImporte extends JInternalFrame {
 	private JScrollPane scrollPane;

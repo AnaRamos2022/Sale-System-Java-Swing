@@ -232,6 +232,7 @@ public class RegistroVenta extends JInternalFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnBuscar(ActionEvent e) {
+		//Para verificar que los códigos de cliente y producto estén ingresados.
 		if ((textCodCliente.getText().equals("")) || (textCodProducto.getText().equals(""))) {
 			JOptionPane.showMessageDialog(this, "Ingresar datos de búsqueda");
 			return;

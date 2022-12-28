@@ -9,10 +9,6 @@ import javax.swing.table.DefaultTableModel;
 
 import clases.Venta;
 import arreglos.ArregloVentas;
-import clases.Cliente;
-import clases.Producto;
-import arreglos.ArregloClientes;
-import arreglos.ArregloProductos;
 
 public class ReporteListadoGeneralVentas extends JInternalFrame {
 	private JScrollPane scrollPane;
@@ -91,8 +87,9 @@ public class ReporteListadoGeneralVentas extends JInternalFrame {
 	}
 	
 	public void limpiarTabla() {
-		while (modelo.getRowCount() > 0) {
-			modelo.removeRow(0);
-		}
+		//while (modelo.getRowCount() > 0) {
+			//modelo.removeRow(0);
+		//}
+	modelo.setRowCount(0);
 	}
 }

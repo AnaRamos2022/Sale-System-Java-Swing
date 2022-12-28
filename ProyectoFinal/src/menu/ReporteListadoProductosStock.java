@@ -6,7 +6,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import arreglos.ArregloProductos;
-import clases.Producto;
 
 public class ReporteListadoProductosStock extends JInternalFrame {
 	private JScrollPane scrollPane;
@@ -64,7 +63,7 @@ public class ReporteListadoProductosStock extends JInternalFrame {
 	private void mostrarReporte() {
 		textArea.setText("");
 		textArea.append("LISTADO DE PRODUCTOS" + "\n");
-		textArea.append("====================================================================" + "\n");
+		textArea.append("==========================================================" + "\n");
 		stockProductos();
 	}
 }

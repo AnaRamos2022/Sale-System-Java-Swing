@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import clases.Cliente;
-import clases.Producto;
 
 public class ArregloClientes {
 	private ArrayList<Cliente> listadoClientes = new ArrayList<Cliente>();
@@ -29,36 +28,36 @@ public class ArregloClientes {
 	// Método que adicionará clientes al pulsar el btn guardar.
 	public void adicionarCliente(Cliente cliente) {
 		listadoClientes.add(cliente);
-		this.archivarClientes();
+		archivarClientes();
 	}
 
-	// método tamaño
+	// Método tamaño
 	public int tamaño() {
 		return listadoClientes.size();
 	}
 
-	// Método obtenerProducto
+	// Método para obtener el cliente ingresando una posición
 	public Cliente obtenerCliente(int i) {
 		return listadoClientes.get(i);
 	}
 
-	// Método obtiene la posicion del ultimo cliente y devolver el código correlativo incrementado en 1.
+	// Método obtiene la posición del último cliente y devuelve el código correlativo incrementado en 1.
 	public int obtenerCodigoCorrelativo() {
 		int ultimaPosicionArrayList = listadoClientes.size() - 1;
 		if (listadoClientes.size() == 0) {
 			return 1001;
 		} else {
-			// conseguir el producto de la última posición registrado.
-			Cliente utlimoClienteRegistrado = listadoClientes.get(ultimaPosicionArrayList);
+			// conseguir el cliente de la última posición registrado.
+			Cliente utlimoClienteRegistrado = obtenerCliente(ultimaPosicionArrayList);
 			return utlimoClienteRegistrado.getCodigoCliente() + 1;
 		}
 	}
 
-	// Metodo consultar para obtener cliente por código correlativo ingresado.
+	// Metodo consultar para obtener el cliente por código correlativo ingresado.
 	public Cliente obtenerClienteCodigo(int codCliente) {
 		for (int i = 0; i < listadoClientes.size(); i++) {
-			if (codCliente == listadoClientes.get(i).getCodigoCliente()) {
-				return listadoClientes.get(i);
+			if (codCliente == obtenerCliente(i).getCodigoCliente()) {
+				return obtenerCliente(i);
 			}
 		}
 		return null;
@@ -67,15 +66,13 @@ public class ArregloClientes {
 	// Método que guardará clientes modificados al pulsar el btn guardar.
 	public void modificarCliente(Cliente cliente) {
 		listadoClientes.set(posicionClienteCodigo(cliente.getCodigoCliente()), cliente);
-		this.archivarClientes();
+		archivarClientes();
 	}
 
-	// Método para obtener la posición del cliente en el arrayList por código de
-	// cliente.
+	// Método para obtener la posición del cliente en el arrayList por código de cliente.
 	public int posicionClienteCodigo(int codigo) {
 		for (int i = 0; i < listadoClientes.size(); i++) {
-			int codigoCliente = listadoClientes.get(i).getCodigoCliente(); // devuelve el atributo codCliente del
-																			// cliente en la posicion i
+			int codigoCliente = obtenerCliente(i).getCodigoCliente(); // devuelve el atributo codCliente del cliente en la posicion i
 			if (codigoCliente == codigo) {
 				return i;
 			}
@@ -87,19 +84,18 @@ public class ArregloClientes {
 	public void eliminarCliente(int codigo) {
 		int posicionEliminar = posicionClienteCodigo(codigo);
 		listadoClientes.remove(posicionEliminar);
-		this.archivarClientes();
+		archivarClientes();
 	}
 
 	// Método para guardar la data de la Lista de Clientes en un archivo
 	private void archivarClientes() {
-
 		try {
 			PrintWriter pw;
 			Cliente c;
 			String fila;
 			pw = new PrintWriter(new FileWriter("clientes.txt"));
 			for (int i = 0; i < listadoClientes.size(); i++) {
-				c = listadoClientes.get(i);
+				c = obtenerCliente(i);
 				fila = c.getCodigoCliente() + ";" + c.getNombres() + ";" + c.getApellidos() + ";" + c.getDni() + ";"
 						+ c.getDireccion() + ";" + c.getTelefono();
 				pw.println(fila);
@@ -110,7 +106,7 @@ public class ArregloClientes {
 		}
 	}
 
-	// Método para leer el archivo de Clientes fila por fila.
+	// Método para leer la data en el archivo de Clientes fila por fila.
 	private void cargarArchivoClientes() {
 		try {
 			BufferedReader br;
